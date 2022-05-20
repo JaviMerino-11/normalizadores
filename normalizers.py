@@ -4,20 +4,29 @@ from normalizer_functions.no_accents_nor_specialcharac import no_accents_nor_spe
 from normalizer_functions.remove_double_white_spaces import remove_several_white_spaces
 
 
-def normalizer(phrase_list: List[str], result: List[str] = None) -> List[str]:
-    phrase_list_lower_case = lower_case_normalizer(phrase_list)
-    phrase_list_unaccented_no_special_characters = no_accents_nor_specialcharac(phrase_list_lower_case)
-    phrase_list_without_white_spaces = remove_several_white_spaces(phrase_list_unaccented_no_special_characters)
-    normalized_phrase_list = phrase_list_without_white_spaces
+def normalizer(phrase_list: List[str], result: List[str] = None) -> None:
+    lower_case_normalizer(phrase_list)
+    no_accents_nor_specialcharac(phrase_list)
+    remove_several_white_spaces(phrase_list)
 
-    return normalized_phrase_list
+
+def normalizer2(phrase_list: List[str], result: List[str] = None) -> None:
+    no_accents_nor_specialcharac(phrase_list)
+    remove_several_white_spaces(phrase_list)
 
 
 def main() -> None:
-    phrase_list = ['Hola', 'múndó', 'ñoño', 'cosas     que haCer']
-    print('INPUT: %s' % phrase_list)
-    phrase_list = normalizer(phrase_list)
-    print('OUTPUT: %s' % phrase_list)
+    phrase_list = ['HOLA', 'múndó', 'ñoño', 'cosas     que haCer']
+    phrase_list2 = phrase_list
+    print('INPUT (LIST 1): %s' % phrase_list)
+    print('INPUT (LIST 2): %s' % phrase_list2)
+
+    normalizer2(phrase_list)
+    normalizer(phrase_list2)
+
+    print('OUTPUT (LIST 1 all normalizers): %s' % phrase_list)
+
+    print('OUTPUT (LIST 2 only special and white spaces normalized): %s' % phrase_list2)
 
 
 if __name__ == '__main__':

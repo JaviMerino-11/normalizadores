@@ -1,6 +1,6 @@
 from typing import List
 
 
-def lower_case_normalizer(phrase_list: List[str]) -> List[str]:
-    phrase_list = [lower_case.lower() for lower_case in phrase_list]
-    return phrase_list
+def lower_case_normalizer(phrase_list: List[str]) -> None:
+    for index, word in enumerate(phrase_list):
+        phrase_list[index] = word.lower()
